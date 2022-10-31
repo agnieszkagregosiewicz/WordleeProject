@@ -19,7 +19,6 @@ public class User {
     @NotEmpty
     private String password;
     private String email;
-    private Double ranking;
     private Double score;
     private Long games;
 
