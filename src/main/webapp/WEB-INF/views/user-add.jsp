@@ -62,7 +62,7 @@
                                         <form:hidden path="score" value = "0"/>
                                     </div>
                                     <div>
-                                        <form:hidden path="games" value="0"/>
+                                        <form:hidden path="gamesPlayedQ" value="0"/>
                                     </div>
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                     <input class="btn btn-primary btn-user btn-block" type="submit" value="Zapisz"/>

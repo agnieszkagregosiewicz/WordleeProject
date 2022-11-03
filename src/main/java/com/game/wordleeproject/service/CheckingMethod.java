@@ -58,9 +58,9 @@ public class CheckingMethod {
         System.out.println("Prawidłowe hasło to: " + headword);
     }
 
-    private char[] checkLettersInWord(String headword, String guessWord) {
+    public char[] checkLettersInWord(String headword, String guessWord) {
         char[] headwordChar = headword.toCharArray();
-        char[] guess = guessWord.toCharArray();
+        char[] guess = guessWord.toLowerCase().toCharArray();
         for (char c : guess) {
             unusedLetters.remove(Character.toString(c));
         }

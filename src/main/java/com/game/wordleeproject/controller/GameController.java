@@ -4,8 +4,10 @@ package com.game.wordleeproject.controller;
 import com.game.wordleeproject.model.JsonResponse;
 import com.game.wordleeproject.model.Word;
 import com.game.wordleeproject.service.CheckingMethod;
+import com.game.wordleeproject.service.ReadFile;
 import com.game.wordleeproject.service.WordGenerator;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +26,22 @@ public class GameController {
     }
     @PostMapping(value = "/api/word")
     @ResponseBody
-    public JsonResponse receiveWord(@RequestBody Word word, Model model) {
+    public ResponseEntity<?> receiveWord(@RequestBody Word word) {
+        System.out.println(headword);
         System.out.println(word);
         JsonResponse response = new JsonResponse();
-        response.setMsg(checkingMethod.checkOneWord(headword, word.getWord(), file));
+        System.out.println(word.getWord());
+        if (!checkingMethod.checkIfWordExistInArray(word.getWord(), ReadFile.makeArrayFromFile(file))) {
+            response.setMsg("Takie słowo nie istnieje.");
+            return ResponseEntity.badRequest().body(response);
+
+        } else if (!checkingMethod.checkIfWordLengthIsOK(headword, word.getWord())) {
+            response.setMsg("Słowo powinno mieć: " + headword.length() + " liter.");
+            return ResponseEntity.badRequest().body(response);
+        }
+        response.setMsg(String.valueOf(checkingMethod.checkLettersInWord(headword, word.getWord())));
         System.out.println(response);
-        return response;
+        return ResponseEntity.ok(response);
     }
 
 

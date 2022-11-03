@@ -69,8 +69,10 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <div class="topbar-divider d-none d-sm-block"></div>
-                <ul>
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -104,7 +106,10 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-4 text-gray-800">Zgadnij słowo w sześciu próbach.</h1>
-
+<%--                <button hidden class="btn-icon-split btn-warning" ></button>--%>
+<%--                <button hidden class="btn-icon-split btn-success"></button>--%>
+                <span hidden id=success class="badge badge-pilll badge-success"></span>
+                <span hidden id=warning class="badge badge-pilll badge-warning"></span>
                 <div class="gactive">
                     <div>
                         <div class="gcell" data-col="0">&nbsp;</div>
@@ -113,7 +118,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-                    <div class="wrmsg">X</div>
+<%--                    <div class="wrmsg">X</div>--%>
                 </div>
                 <div>
                     <div>
@@ -123,7 +128,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-                    <div class="wrmsg">X</div>
+<%--                    <div class="wrmsg">X</div>--%>
                 </div>
                 <div>
                     <div>
@@ -133,7 +138,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-                    <div class="wrmsg">X</div>
+<%--                    <div class="wrmsg">X</div>--%>
                 </div>
                 <div>
                     <div>
@@ -143,7 +148,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-                    <div class="wrmsg">X</div>
+<%--                    <div class="wrmsg">X</div>--%>
                 </div>
                 <div>
                     <div>
@@ -153,7 +158,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-                    <div class="wrmsg">X</div>
+<%--                    <div class="wrmsg">X</div>--%>
                 </div>
                 <div>
                     <div>
@@ -163,7 +168,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-                    <div class="wrmsg">X</div>
+<%--                    <div class="wrmsg">X</div>--%>
 
                 </div>
                 <div>
@@ -213,7 +218,7 @@
                     <button class="btkey" data-let="Ó" data-col="0">Ó</button>
                     <button class="btkey" data-let="Ł" data-col="0">Ł</button>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-61">
 
                     <!-- Basic Card Example -->
                     <div class="card shadow mb-4">
@@ -221,7 +226,12 @@
                             <h6 class="m-0 font-weight-bold text-primary">Zasady</h6>
                         </div>
                         <div class="card-body1">
-                            Zielony kolor - literka w dobrym miejscu, żółty - literka w złym miejscu, szary - nie ma tej literki w szukanym słowie.
+                            <span class="badge badge-pilll badge-success">Z</span>
+                            - literka w dobrym miejscu,
+                            <span class="badge badge-pilll badge-warning">X</span>
+                            - literka w złym miejscu,
+                            <span class="badge badge-pilll badge-secondary">Z</span>
+                            - nie ma tej literki w szukanym słowie.
                         </div>
                     </div>
 

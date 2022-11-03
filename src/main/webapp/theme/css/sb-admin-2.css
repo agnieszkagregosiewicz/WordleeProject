@@ -9805,6 +9805,7 @@ a:focus {
 
 #wrapper #content-wrapper #content {
   flex: 1 0 auto;
+  text-align: center;
 }
 
 .container,
@@ -11292,4 +11293,9 @@ body.sidebar-toggled footer.sticky-footer {
 .gcell[data-col="1"] { background: #666; }
 .gcell[data-col="2"] { background: #ec2; }
 .gcell[data-col="3"] { background: #2a2; }
-
+.col-lg-61{flex:0 0 50%;max-width:50%;text-align:center;margin: 0 auto; margin-top:20px }
+.gcelle[data-col="1"] {color: white}
+.badge-pilll {padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+border-radius: 3px; padding: 7px; font-size: 1.2em}

@@ -82,7 +82,11 @@ public class UserController {
         return "user-edit";
     }
 
-
+    @GetMapping(value = "/login")
+    public String loginForm(User user, Model model) {
+        model.addAttribute("user", user);
+        return "login-form";
+    }
 //    @Override
 //    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        response.setContentType("text/html;charset=utf-8");
