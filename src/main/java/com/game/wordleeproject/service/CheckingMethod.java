@@ -9,11 +9,29 @@ import java.util.Scanner;
 public class CheckingMethod {
     private List<String> unusedLetters;
 
+    private String wordToCheck;
+
     public CheckingMethod() {
         unusedLetters = ReadFile.makeArrayFromFile("alfabet.txt");
     }
 
-    public void checkAttempts(String headword, int numberOfAttemps, String inputFileOfWords) {
+    public String checkOneWord(String headword, String wordToCheck, String inputFileOfWords) {
+        char[] result;
+        if (checkIfWordsAreTheSame(headword, wordToCheck)) {
+            return "Gratulacje!";
+        } else {
+            if (!checkIfWordExistInArray(wordToCheck, ReadFile.makeArrayFromFile(inputFileOfWords))) {
+                return "Takie słowo nie istnieje.";
+            }
+            if (!checkIfWordLengthIsOK(headword, wordToCheck)) {
+                return "Słowo powinno mieć: " + headword.length() + " liter.";
+            }
+            result = checkLettersInWord(headword, wordToCheck);
+        }
+        return result.toString();
+    }
+
+    public void checkConsoleAttempts(String headword, int numberOfAttemps, String inputFileOfWords) {
         for (int i = 0; i < numberOfAttemps; i++) {
             System.out.println("Letters to choose: " + unusedLetters);
             System.out.println("Zgadnij hasło: ");

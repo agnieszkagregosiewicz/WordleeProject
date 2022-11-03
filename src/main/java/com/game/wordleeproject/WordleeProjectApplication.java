@@ -1,4 +1,4 @@
-package com.game.wordleeproject.bootmaven;
+package com.game.wordleeproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

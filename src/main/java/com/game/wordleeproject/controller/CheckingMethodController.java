@@ -10,6 +10,6 @@ public class CheckingMethodController {
         CheckingMethod checkingMethod = new CheckingMethod();
         String file = "5lettersWords.txt";
         String headword = WordGenerator.generateHeadword(file);
-        checkingMethod.checkAttempts(headword, 6, file);
+        checkingMethod.checkConsoleAttempts(headword, 6, file);
     }
 }
