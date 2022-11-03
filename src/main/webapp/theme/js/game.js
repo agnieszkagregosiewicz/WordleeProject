@@ -43,52 +43,7 @@ function sendWordToCheck(wordToCheck) {
         timeout: 600000,
         success: function (data) {
             const json = JSON.stringify(data);
-            let result = json.split(":");
-            let firstAvailableWord = document.querySelector("div .gactive");
-            let cells = firstAvailableWord.firstElementChild.children;
-            for (let j = 1; j < result[1].length; j++) {
-                if (result[1].substring(1, 6) === "11111") {
-                    cells[j - 1].style.backgroundColor = "green";
-                    cells[j - 1].style.color = "white";
-                    const btnS = document.querySelector("#success");
-                    btnS.removeAttribute("hidden");
-                    $('#success').html("Gratulacje!");
-
-                }
-                if (result[1].charAt(j) === "0") {
-                    cells[j - 1].style.backgroundColor = "grey";
-                    cells[j - 1].style.color = "white";
-                    letterButtons.forEach(function (letterButton) {
-                        if (letterButton.innerText === wordToCheck.charAt(j - 1)) {
-                            letterButton.style.backgroundColor = "grey";
-                            letterButton.style.color = "white";
-                        }
-                    })
-                }
-                if (result[1].charAt(j) === "1") {
-                    cells[j - 1].style.backgroundColor = "green";
-                    cells[j - 1].style.color = "white";
-                    letterButtons.forEach(function (letterButton) {
-                        if (letterButton.innerText === wordToCheck.charAt(j - 1)) {
-                            letterButton.style.backgroundColor = "green";
-                            letterButton.style.color = "white";
-                        }
-                    })
-                }
-                if (result[1].charAt(j) === "2") {
-                    cells[j - 1].style.backgroundColor = "orange";
-                    cells[j - 1].style.color = "white";
-                    letterButtons.forEach(function (letterButton) {
-                        if (letterButton.innerText === wordToCheck.charAt(j - 1)) {
-                            letterButton.style.backgroundColor = "orange";
-                            letterButton.style.color = "white";
-                        }
-                    })
-                }
-            }
-            i = 0;
-            firstAvailableWord.classList.remove("gactive");
-            firstAvailableWord.nextElementSibling.classList.add("gactive");
+            cellsManaging(json, wordToCheck);
         },
         error: function (e) {
             var json = e.responseText;
@@ -98,5 +53,43 @@ function sendWordToCheck(wordToCheck) {
         }
 
     })
-
 }
+
+function cellsManaging(json, wordToCheck) {
+    let result = json.split(":");
+    let firstAvailableWord = document.querySelector("div .gactive");
+    let cells = firstAvailableWord.firstElementChild.children;
+    for (let j = 1; j < result[1].length; j++) {
+        if (result[1].substring(1, 6) === "11111") {
+            cells[j - 1].style.backgroundColor = "green";
+            cells[j - 1].style.color = "white";
+            const btnS = document.querySelector("#success");
+            btnS.removeAttribute("hidden");
+            $('#success').html("Gratulacje!");
+        }
+        if (result[1].charAt(j) === "1") {
+            coloringCells(j, "green", cells, wordToCheck);
+        }
+        if (result[1].charAt(j) === "2") {
+            coloringCells(j, "orange", cells, wordToCheck);
+        }
+        if (result[1].charAt(j) === "0") {
+            coloringCells(j, "grey", cells, wordToCheck);
+        }
+    }
+    i = 0;
+    firstAvailableWord.classList.remove("gactive");
+    firstAvailableWord.nextElementSibling.classList.add("gactive");
+}
+
+function coloringCells(j, color, cells, wordToCheck) {
+    cells[j - 1].style.backgroundColor = color;
+    cells[j - 1].style.color = "white";
+    letterButtons.forEach(function (letterButton) {
+        if (letterButton.innerText === wordToCheck.charAt(j - 1)) {
+            letterButton.style.backgroundColor = color;
+            letterButton.style.color = "white";
+        }
+    })
+}
+

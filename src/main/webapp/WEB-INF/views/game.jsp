@@ -105,11 +105,13 @@
             <div class="container-fluid1">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Zgadnij słowo w sześciu próbach.</h1>
-<%--                <button hidden class="btn-icon-split btn-warning" ></button>--%>
-<%--                <button hidden class="btn-icon-split btn-success"></button>--%>
-                <span hidden id=success class="badge badge-pilll badge-success"></span>
-                <span hidden id=warning class="badge badge-pilll badge-warning"></span>
+                <div margin style="margin-bottom: 10px">
+                    <h4 class="m-0 font-weight-bold text-primary">Zgadnij słowo w sześciu próbach.</h4>
+                </div>
+                <div margin style="height: 40px">
+                    <span hidden id=success class="badge badge-pilll badge-success"></span>
+                    <span hidden id=warning class="badge badge-pilll badge-warning"></span>
+                </div>
                 <div class="gactive">
                     <div>
                         <div class="gcell" data-col="0">&nbsp;</div>
@@ -118,7 +120,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-<%--                    <div class="wrmsg">X</div>--%>
+                    <%--                    <div class="wrmsg">X</div>--%>
                 </div>
                 <div>
                     <div>
@@ -128,7 +130,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-<%--                    <div class="wrmsg">X</div>--%>
+                    <%--                    <div class="wrmsg">X</div>--%>
                 </div>
                 <div>
                     <div>
@@ -138,7 +140,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-<%--                    <div class="wrmsg">X</div>--%>
+                    <%--                    <div class="wrmsg">X</div>--%>
                 </div>
                 <div>
                     <div>
@@ -148,7 +150,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-<%--                    <div class="wrmsg">X</div>--%>
+                    <%--                    <div class="wrmsg">X</div>--%>
                 </div>
                 <div>
                     <div>
@@ -158,7 +160,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-<%--                    <div class="wrmsg">X</div>--%>
+                    <%--                    <div class="wrmsg">X</div>--%>
                 </div>
                 <div>
                     <div>
@@ -168,7 +170,7 @@
                         <div class="gcell" data-col="0">&nbsp;</div>
                         <div class="gcell" data-col="0">&nbsp;</div>
                     </div>
-<%--                    <div class="wrmsg">X</div>--%>
+                    <%--                    <div class="wrmsg">X</div>--%>
 
                 </div>
                 <div>
@@ -226,9 +228,9 @@
                             <h6 class="m-0 font-weight-bold text-primary">Zasady</h6>
                         </div>
                         <div class="card-body1">
-                            <span class="badge badge-pilll badge-success">Z</span>
+                            <span class="badge badge-pilll badge-success">X</span>
                             - literka w dobrym miejscu,
-                            <span class="badge badge-pilll badge-warning">X</span>
+                            <span class="badge badge-pilll badge-warning">Y</span>
                             - literka w złym miejscu,
                             <span class="badge badge-pilll badge-secondary">Z</span>
                             - nie ma tej literki w szukanym słowie.
@@ -270,15 +272,15 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Gotowy do wyjścia?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">Wybierz 'wyloguj' jeśli chcesz zakończyć sesję.</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/logout">Logout</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Wróć</button>
+                <a class="btn btn-primary" href="/logout">Wyloguj</a>
             </div>
         </div>
     </div>
