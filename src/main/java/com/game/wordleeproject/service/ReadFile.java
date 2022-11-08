@@ -47,6 +47,7 @@ public class ReadFile {
 
     public static void selectFromFileToNewFile(String inputFile, int minNumberOfLetters, int maxNumberOfLetters, String newFileName) {
         File file = new File(inputFile);
+        file.setReadOnly();
         StringBuilder sb = new StringBuilder();
 
         try {

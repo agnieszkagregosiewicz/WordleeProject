@@ -13,5 +13,7 @@ public interface UserService {
     Optional<User> get(Long id);
     void delete(Long id);
     void update(User user);
+    Optional<User> findByEmail(String email);
+
 
 }

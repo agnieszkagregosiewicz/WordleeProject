@@ -36,7 +36,7 @@ function sendWordToCheck(wordToCheck) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "/user/api/word",
+        url: "/api/word",
         data: JSON.stringify(word),
         dataType: 'json',
         cache: false,
@@ -51,12 +51,13 @@ function sendWordToCheck(wordToCheck) {
             btn.removeAttribute("hidden");
             $('#warning').html("Takie słowo nie istnieje");
         }
-
     })
 }
 
+
 function cellsManaging(json, wordToCheck) {
     let result = json.split(":");
+    console.log(result);
     let firstAvailableWord = document.querySelector("div .gactive");
     let cells = firstAvailableWord.firstElementChild.children;
     for (let j = 1; j < result[1].length; j++) {
@@ -66,6 +67,10 @@ function cellsManaging(json, wordToCheck) {
             const btnS = document.querySelector("#success");
             btnS.removeAttribute("hidden");
             $('#success').html("Gratulacje!");
+            const btnPlay = document.querySelector('#playAgain');
+            btnPlay.removeAttribute('hidden');
+        } if (result.length===3) {
+            showHeadword(result);
         }
         if (result[1].charAt(j) === "1") {
             coloringCells(j, "green", cells, wordToCheck);
@@ -91,5 +96,19 @@ function coloringCells(j, color, cells, wordToCheck) {
             letterButton.style.color = "white";
         }
     })
+}
+const btnPlay = document.querySelector('#playAgain');
+btnPlay.addEventListener('click', drawNewWord);
+function drawNewWord() {
+    fetch('localhost:8080/user/game');
+}
+function showHeadword(result) {
+    const btnShow = document.querySelector("#showWord");
+    btnShow.removeAttribute("hidden");
+    let headword = result[2].substring(1,6);
+    btnShow.innerHTML= 'Prawidłowe słowo to: ' + headword;
+    const btnPlay = document.querySelector('#playAgain');
+    btnPlay.removeAttribute('hidden');
+
 }
 

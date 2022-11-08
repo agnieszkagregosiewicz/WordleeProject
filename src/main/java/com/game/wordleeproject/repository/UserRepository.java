@@ -21,27 +21,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findById(Long id);
     @Modifying
     void deleteUserById(Long id);
+    Optional<User> findByEmail(String email);
 
-//    public static boolean checkLogin(String email, String password) {
-//
-//        try (Connection connection = DbUtil.getConnection();
-//             PreparedStatement statement = connection.prepareStatement(CHECK_EMAIL)
-//        ) {
-//            statement.setString(1, email);
-//            try (ResultSet resultSet = statement.executeQuery()) {
-//                if (!resultSet.next()) {
-//                    return false;
-//                }
-//                if (!resultSet.getString("password").equals(hashPassword(password))) {
-//                    System.out.println(hashPassword(password));
-//                    System.out.println(resultSet.getString("password"));
-//                    return false;
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return true;
-//    }
+    //Query("select user_score from Ranking r where user_id=:user")
+    //Long getRanking(User user);
+
+    //Long
+    //Long findUsers;
+
 
 }

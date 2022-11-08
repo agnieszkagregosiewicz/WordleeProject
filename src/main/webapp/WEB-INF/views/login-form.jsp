@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,12 +47,12 @@
                                                     placeholder="Wpisz email"/>
                                         <form:errors path="email" cssStyle="color: red" element="div"/>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
                                         <form:input path="password" type="password"
                                                     class="form-control form-control-user"
                                                     placeholder="Wpisz hasło"/>
                                         <form:errors path="password" cssStyle="color: red" element="div"/>
-                                    </div>
                                     <input class="btn btn-primary btn-user btn-block" type="submit" value="Zapisz"/>
                                     <hr>
                                     <a href="index.html" class="btn btn-google btn-user btn-block">

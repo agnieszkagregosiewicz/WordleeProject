@@ -46,32 +46,13 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="user">
+            <a class="nav-link" href="/">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Konto użytkownika</span></a>
+                <span>Strona główna</span></a>
         </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <%--            <div class="sidebar-heading">--%>
-        <%--                Interface--%>
-        <%--            </div>--%>
-
-        <%--                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">--%>
-        <%--                    <div class="bg-white py-2 collapse-inner rounded">--%>
-        <%--                        <h6 class="collapse-header">Login Screens:</h6>--%>
-        <%--                        <a class="collapse-item" href="login.html">Login</a>--%>
-        <%--                        <a class="collapse-item" href="register.html">Register</a>--%>
-        <%--                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>--%>
-        <%--                        <div class="collapse-divider"></div>--%>
-        <%--                        <h6 class="collapse-header">Other Pages:</h6>--%>
-        <%--                        <a class="collapse-item" href="404.html">404 Page</a>--%>
-        <%--                        <a class="collapse-item" href="blank.html">Blank Page</a>--%>
-        <%--                    </div>--%>
-        <%--                </div>--%>
-
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -100,9 +81,9 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Edycja użykownika ${user.login}</h1>
-                    <a href="user?id=${user.id}"
+                    <a href="/user/"
                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i>Konto użytkownika</a>
+                            class="fas fa-download fa-sm text-white-50"></i> Konto użytkownika</a>
                 </div>
                 <form:form class="user/edit" method="post" modelAttribute="user">
 
@@ -118,11 +99,11 @@
                     </div>
                     <div class="form-group">
                         <form:input path="password" class="form-control form-control-user"
-                               value="${user.password}"     placeholder="Zmień hasło"/>
+                                placeholder="Zmień hasło"/>
                         <form:errors path="password" cssStyle="color: red" element="div"/>
                     </div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <input class="btn btn-primary btn-user btn-block" type="submit" value="Save"/>
+                    <input class="btn btn-primary btn-user btn-block" type="submit" value="Zapisz"/>
                 </form:form>
 
                 <!-- Content Row -->
@@ -134,7 +115,13 @@
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                <%@ include file="/footer.jsp" %>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Wordlee Project 2022</span>
+                        </div>
+                    </div>
+                </footer>
                 <!-- End of Footer -->
 
             </div>
@@ -150,6 +137,15 @@
     </a>
 </div>
 <!-- End of Page Wrapper -->
+<!-- Bootstrap core JavaScript-->
+<script src="/theme/vendor/jquery/jquery.min.js"></script>
+<script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/theme/js/sb-admin-2.min.js"></script>
 </body>
 
 </html>
