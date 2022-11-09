@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-record PairOfWords ( Word word1 , Word word2 ) {}
+record PairOfWords(Word word1, Word word2) {}
+
+record PairOfWordWords(Word word, Set<Word> words) {}
 
 public class BestWords {
     Set<Word> secretWords = new HashSet<>();
@@ -45,16 +47,23 @@ public class BestWords {
                 Word w = new Word(word);
                 set.add(w);
             }
-        } catch (
-                FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
         return set;
     }
 
     public void findPatternsMatrix() {
-        for(Word w : allWords)
-            for(Word ww : secretWords)
+        for (Word w : allWords)
+            for (Word ww : secretWords)
                 patternsMatrix.put(new PairOfWords(w, ww), w.findPatternAsInt(ww));
+    }
+
+    public Set<Word> getWordsConsistentWithWordAndPattern(Word w, int pattern) {
+        Set<Word> set = new HashSet<>();
+        for (Word ww : allWords)
+            if (ww.findPatternAsInt(w) == pattern)
+                set.add(ww);
+        return set;
     }
 }
