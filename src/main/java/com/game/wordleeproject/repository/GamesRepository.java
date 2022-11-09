@@ -16,6 +16,8 @@ public interface GamesRepository extends JpaRepository<Games, Long> {
 
     Optional<Games> findById(Long id);
     void deleteGamesById(Long id);
+    @Modifying
+    void update(Games game);
     List<Games> findAll();
 
 }

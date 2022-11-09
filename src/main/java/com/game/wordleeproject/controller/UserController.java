@@ -28,10 +28,19 @@ public class UserController {
         return "users-list";
     }
 
+    @GetMapping("/ranking")
+    public String rankingList(Model model) {
+        List<User> usersR = userService.getListRanking();
+        model.addAttribute("usersR", usersR);
+        return "users-list-ranking";
+    }
+
     @GetMapping("/user")
     public String readUser(@AuthenticationPrincipal CurrentUser userSession, Model model) {
         Optional<User> user = userService.get(userSession.getUser().getId());
         if (user.isPresent()) {
+            Long ranking = userService.getRanking(user.get().getScore());
+            model.addAttribute("ranking", ranking);
             model.addAttribute("user", user.get());
         } else {
             return "oauth_login";

@@ -69,7 +69,8 @@ function cellsManaging(json, wordToCheck) {
             $('#success').html("Gratulacje!");
             const btnPlay = document.querySelector('#playAgain');
             btnPlay.removeAttribute('hidden');
-        } if (result.length===3) {
+        }
+        if (result.length === 3) {
             showHeadword(result);
         }
         if (result[1].charAt(j) === "1") {
@@ -111,4 +112,38 @@ function showHeadword(result) {
     btnPlay.removeAttribute('hidden');
 
 }
+
+document.addEventListener('keypress', (event) => {
+    letterButtons.forEach(function (letterButton) {
+        if (event.key.toUpperCase() === letterButton.innerText) {
+            let firstAvailableWord = document.querySelector("div .gactive");
+            let cells = firstAvailableWord.firstElementChild.children;
+            if (i < cells.length - 1) {
+                cells[i].innerText = letterButton.innerText;
+                i++;
+            } else if (i === cells.length - 1) {
+                cells[i].innerText = letterButton.innerText;
+                let wordToCheck = '';
+                for (let j = 0; j < cells.length; j++) {
+                    wordToCheck += cells[j].innerText;
+                }
+                i++;
+                sendWordToCheck(wordToCheck);
+            }
+        }
+    })
+})
+document.addEventListener('keydown', function (event) {
+    const key = event.key; // const {key} = event; ES6+
+    if (key === "Backspace") {
+        let firstAvailableWord = document.querySelector("div .gactive");
+        let cells = firstAvailableWord.firstElementChild.children;
+        if (i > 0) {
+            cells[i - 1].innerHTML = "&nbsp";
+            i--;
+            const btn = document.querySelector("#warning");
+            btn.setAttribute("hidden", "hidden");
+        }
+    }
+})
 

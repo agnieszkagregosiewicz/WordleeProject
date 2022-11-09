@@ -23,11 +23,11 @@ public class User {
     @Column(unique = true)
     private String login;
     @NotEmpty
-    @Size(min = 5)
+    @Size(min = 7, message = "Hasło musi mieć conajmniej 7 znaków")
     private String password;
     @NotEmpty
     @Column(unique = true)
-    @Email
+    @Email (message = "Wpisz poprawny email")
     private String email;
     private Double winnings;
     private Long gamesPlayedQ;

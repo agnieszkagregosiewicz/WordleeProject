@@ -3,6 +3,8 @@ package com.game.wordleeproject.repository;
 import com.game.wordleeproject.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,11 +25,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void deleteUserById(Long id);
     Optional<User> findByEmail(String email);
 
-    //Query("select user_score from Ranking r where user_id=:user")
-    //Long getRanking(User user);
+    @Query("select count(u) FROM User u Where u.score >= :score")
+    Long getRanking(Double score);
 
-    //Long
-    //Long findUsers;
+    List<User> findAllByOrderByScoreDesc();
+
+
 
 
 }

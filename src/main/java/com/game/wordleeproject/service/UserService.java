@@ -14,6 +14,8 @@ public interface UserService {
     void delete(Long id);
     void update(User user);
     Optional<User> findByEmail(String email);
+    Long getRanking(Double score);
+    List<User> getListRanking();
 
 
 }

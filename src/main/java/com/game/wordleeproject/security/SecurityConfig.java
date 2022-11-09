@@ -39,7 +39,7 @@ public class SecurityConfig {
               //  .oauth2Login()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/user/")
+                .defaultSuccessUrl("/user")
                 .and().logout().logoutSuccessUrl("/")
                 .permitAll();
         return http.build();

@@ -34,11 +34,12 @@ public class GameController {
 
     @GetMapping(value = "/user/game")
     public String giveWord(Model model, @AuthenticationPrincipal CurrentUser user) {
-        System.out.println(newgame);
+        Long ranking = userService.getRanking(user.getUser().getScore());
         if (newgame) {
             newgame = false;
             headword = WordGenerator.generateHeadword(file);
         }
+        model.addAttribute("ranking", ranking);
         model.addAttribute("user", user.getUser());
         return "game";
     }

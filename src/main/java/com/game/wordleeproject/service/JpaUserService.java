@@ -35,6 +35,10 @@ public class JpaUserService implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+        user.setScore(0.0);
+        user.setWinnings(0.0);
+        user.setGamesPlayedQ(0L);
+        user.setGames(null);
         userRepository.save(user);
     }
 
@@ -57,11 +61,15 @@ public class JpaUserService implements UserService {
         return userRepository.findByEmail(email);
     }
 
-//    public Long getRanking(User user) {
-//            Query query = entityManager.createQuery("SELECT r FROM Ranking r WHERE user_id=:user");
-//        query.setParameter("user", user.getId());
-//            return query.getResult();
-//        }
+    public Double getScore(User user) {
+        return user.getScore();
+    }
+    public Long getRanking(Double score) {return userRepository.getRanking(score);}
+    public List<User> getListRanking() {
+        return userRepository.findAllByOrderByScoreDesc();
+    }
+
+
 
 
     //indeksowanie - dodatkowe mapowanie w bazie danych, na zbudowanym drzewie, jpa indexes
