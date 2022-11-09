@@ -64,7 +64,8 @@ public class Word {
         return pattern;
     }
 
-    public String getWordAsString() {
+    @Override
+    public String toString() {
         char[] w = new char[LENGTH];
         for (int i = 0; i < LENGTH; ++i)
             w[i] = (char) word[i];
