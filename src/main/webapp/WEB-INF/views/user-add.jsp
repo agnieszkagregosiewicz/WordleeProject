@@ -56,7 +56,7 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <form:input path="password" type="password"
                                                     id="password" class="form-control form-control-user"
-                                                    placeholder="Wpisz hasło" onclick="check_pass()"/>
+                                                    placeholder="Wpisz hasło"/>
                                         <form:errors path="password" cssStyle="color: red" element="div"/>
                                     </div>
                                     <div class="col-sm-6">
@@ -64,21 +64,15 @@
                                                id="repeatPassword" placeholder="Powtórz hasło" onclick="check_pass()"/>
                                     </div>
                                 </div>
-                                    <div>
-                                        <form:hidden path="winnings" value="0"/>
-                                    </div>
-                                    <div>
-                                        <form:hidden path="gamesPlayedQ" value="0"/>
-                                    </div>
-                                    <div>
-                                        <form:hidden path="score" value="0"/>
-                                    </div>
                                     <c:if test="${param.error != null && param.error.equals('bad')}">
                                         <h4 class="h4 text-gray-900 mb-4">Nieprawidłowe dane</h4>
                                     </c:if>
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                    <input class="btn btn-primary btn-user btn-block" type="submit" value="Zapisz"/>
-                                    <span hidden id=warningPass class="badge badge-pilll badge-warning"></span>
+                                    <div style="height: 30px; text-align: center">
+                                    <span id=warningPass class="badge badge-pilll badge-warning d-none"></span>
+                                    </div>
+                                        <input style="margin-top: 10px" disabled id="submit" class="btn btn-primary btn-user btn-block" type="submit" value="Zapisz"/>
+
                                     <hr>
                                     <a href="https://accounts.google.com/o/oauth2/v2/auth" class="btn btn-google btn-user btn-block">
                                         <i class="fab fa-google fa-fw"></i> Register with Google

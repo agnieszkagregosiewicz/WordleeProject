@@ -57,7 +57,6 @@ function sendWordToCheck(wordToCheck) {
 
 function cellsManaging(json, wordToCheck) {
     let result = json.split(":");
-    console.log(result);
     let firstAvailableWord = document.querySelector("div .gactive");
     let cells = firstAvailableWord.firstElementChild.children;
     for (let j = 1; j < result[1].length; j++) {
@@ -93,9 +92,10 @@ function coloringCells(j, color, cells, wordToCheck) {
     cells[j - 1].style.color = "white";
     letterButtons.forEach(function (letterButton) {
         if (letterButton.innerText === wordToCheck.charAt(j - 1)) {
+            if (letterButton.style.color != "white") {
             letterButton.style.backgroundColor = color;
             letterButton.style.color = "white";
-        }
+        }}
     })
 }
 const btnPlay = document.querySelector('#playAgain');
@@ -110,7 +110,6 @@ function showHeadword(result) {
     btnShow.innerHTML= 'Prawidłowe słowo to: ' + headword;
     const btnPlay = document.querySelector('#playAgain');
     btnPlay.removeAttribute('hidden');
-
 }
 
 document.addEventListener('keypress', (event) => {

@@ -63,7 +63,6 @@ public class UserController {
         return "redirect:/add?error=bad";
     }
 
-
     @GetMapping(value = "/user/delete")
     public String delete(User user) {
         userService.delete(user.getId());

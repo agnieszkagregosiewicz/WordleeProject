@@ -127,6 +127,7 @@
 
                                 <thead>
                                 <tr>
+                                    <th>Miejsce</th>
                                     <th>Login</th>
                                     <th>Liczba punktów</th>
                                     <th>Wygrane</th>
@@ -134,16 +135,18 @@
                                 </thead>
                                 <tfoot>
                                 <tr>
+                                    <th>Miejsce</th>
                                     <th>Login</th>
                                     <th>Liczba punktów</th>
                                     <th>Wygrane</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <c:forEach items="${users}" var="item">
+                                <c:forEach items="${usersR}" var="item" varStatus="myIndex">
                                     <tr>
+                                        <td><c:out value="${myIndex.index+1}"/></td>
                                         <td><c:out value="${item.login}"/></td>
-                                        <td><c:out value="${item.ranking.score}"/></td>
+                                        <td><c:out value="${item.score}"/></td>
                                         <td><c:out value="${item.winnings}"/></td>
                                     </tr>
                                 </c:forEach>
@@ -161,13 +164,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Wordlee Project 2022</span>
-                </div>
-            </div>
-        </footer>
+        <%@ include file="/WEB-INF/fragments/footer.jsp" %>
         <!-- End of Footer -->
 
     </div>

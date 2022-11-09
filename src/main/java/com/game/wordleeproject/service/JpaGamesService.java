@@ -36,8 +36,8 @@ public class JpaGamesService implements GamesService {
         gamesRepository.deleteGamesById(id);
     }
 
-    @Override
-    public void update(Games game) {
-        gamesRepository.save(game);
-    }
+//    @Override
+//    public void update(Games game) {
+//        gamesRepository.save(game);
+//    }
 }

@@ -69,9 +69,8 @@ public class GameController {
             user.getUser().setGamesPlayedQ(user.getUser().getGamesPlayedQ() + 1);
             user.getUser().setWinnings(user.getUser().getWinnings() + 1);
             user.getUser().setScore(user.getUser().getScore() + newScore);
-            //user.getUser().getGames().add(game);
+            user.getUser().getGames().add(game);
             userService.update(user.getUser());
-            //    user.getUser().setScore(user.getUser().getScore() + newScore);
             model.addAttribute("user", user.getUser());
             numberOfAttempts = 0;
         }

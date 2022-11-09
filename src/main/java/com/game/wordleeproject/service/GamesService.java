@@ -9,5 +9,5 @@ public interface GamesService {
     void add(Games game);
     Optional<Games> get(Long id);
     void delete(Long id);
-    void update(Games game);
+//    void update(Games game);
 }

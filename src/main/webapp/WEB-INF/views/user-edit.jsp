@@ -34,7 +34,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="user">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/user">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -81,7 +81,7 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Edycja użykownika ${user.login}</h1>
-                    <a href="/user/"
+                    <a href="/user"
                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Konto użytkownika</a>
                 </div>
@@ -98,8 +98,8 @@
                         <form:errors path="email" cssStyle="color: red" element="div"/>
                     </div>
                     <div class="form-group">
-                        <form:input path="password" class="form-control form-control-user"
-                                placeholder="Zmień hasło"/>
+                        <form:input path="password"  class="form-control form-control-user"
+                                value="Zmień hasło"/>
                         <form:errors path="password" cssStyle="color: red" element="div"/>
                     </div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -115,13 +115,7 @@
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Wordlee Project 2022</span>
-                        </div>
-                    </div>
-                </footer>
+                <%@ include file="/WEB-INF/fragments/footer.jsp" %>
                 <!-- End of Footer -->
 
             </div>

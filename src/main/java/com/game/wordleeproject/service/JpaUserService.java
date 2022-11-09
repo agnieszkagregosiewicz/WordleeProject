@@ -54,6 +54,13 @@ public class JpaUserService implements UserService {
 
     @Override
     public void update(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Role userRole = roleRepository.findByName("ROLE_USER");
+        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+        user.setGames(user.getGames());
+        user.setWinnings(user.getWinnings());
+        user.setScore(user.getScore());
+        user.setGamesPlayedQ(user.getGamesPlayedQ());
         userRepository.save(user);
     }
     @Override
@@ -68,12 +75,5 @@ public class JpaUserService implements UserService {
     public List<User> getListRanking() {
         return userRepository.findAllByOrderByScoreDesc();
     }
-
-
-
-
-    //indeksowanie - dodatkowe mapowanie w bazie danych, na zbudowanym drzewie, jpa indexes
-
-
 
 }
