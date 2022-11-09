@@ -1,7 +1,5 @@
 package com.game.wordleeproject.bestwords;
 
-import java.util.Objects;
-
 public class Word {
     final static int LENGTH = 5;
     final static int MATCH = 2;
@@ -69,7 +67,7 @@ public class Word {
         char[] w = new char[LENGTH];
         for (int i = 0; i < LENGTH; ++i)
             w[i] = (char) word[i];
-        return String.valueOf(String.valueOf(w));
+        return String.valueOf(w);
     }
 
 
