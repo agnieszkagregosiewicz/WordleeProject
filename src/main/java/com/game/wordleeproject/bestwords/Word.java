@@ -72,6 +72,18 @@ public class Word {
         return String.valueOf(String.valueOf(w));
     }
 
+
+    @Override
+    public int hashCode () {
+        int hash = word[0];
+        int t = 1;
+        for (int i = 1; i < LENGTH; i++) {
+            t *= 3;
+            hash += word[i] * t;
+        }
+        return hash;
+    }
+
     @Override
     public boolean equals ( Object obj ) {
         if ( obj == this ) return true;
