@@ -41,7 +41,7 @@ public class Word {
         pattern = findMatches(w);
 
         for (int i = 0; i < LENGTH; ++i) {
-            if (pattern[i] == MATCH) break;
+            if (pattern[i] == MATCH) continue;
             for (int j = 0; j < LENGTH; ++j) {
                 if (i != j && checked1[i] == 0 && checked2[j] == 0 && word[i] == ww[j]) {
                     pattern[i] = MISPLACED;
