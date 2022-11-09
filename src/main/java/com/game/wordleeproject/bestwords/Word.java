@@ -61,4 +61,11 @@ public class Word {
                 pattern[i] = MATCH;
         return pattern;
     }
+
+    public String getWordAsString() {
+        char[] w = new char[LENGTH];
+        for (int i = 0; i < LENGTH; ++i)
+            w[i] = (char) word[i];
+        return String.valueOf(String.valueOf(w));
+    }
 }
