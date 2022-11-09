@@ -4,11 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class BestWords {
-    final static int LENGTH = 5;
+record PairOfWords ( Word word1 , Word word2 ) {}
 
-    List<Word> secretWords = new ArrayList<>();
-    List<Word> allWords = new ArrayList<>();
+public class BestWords {
+    Set<Word> secretWords = new HashSet<>();
+    Set<Word> allWords = new HashSet<>();
+    HashMap<PairOfWords, Integer> patternsMatrix = new HashMap<>();
 
     public static void main(String[] args) {
         Word w = new Word("ikrik");
@@ -18,11 +19,11 @@ public class BestWords {
 
     }
 
-    public List<Word> getSecretWords() {
+    public Set<Word> getSecretWords() {
         return secretWords;
     }
 
-    public List<Word> getAllWords() {
+    public Set<Word> getAllWords() {
         return allWords;
     }
 
@@ -34,20 +35,26 @@ public class BestWords {
         allWords = readWordsFromFile(fileName);
     }
 
-    private List<Word> readWordsFromFile(String fileName) {
+    private Set<Word> readWordsFromFile(String fileName) {
         File file = new File(fileName);
-        List<Word> list = new ArrayList<>();
+        Set<Word> set = new HashSet<>();
         try {
             Scanner scan = new Scanner(file);
             while (scan.hasNextLine()) {
                 String word = scan.nextLine();
                 Word w = new Word(word);
-                list.add(w);
+                set.add(w);
             }
         } catch (
                 FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        return list;
+        return set;
+    }
+
+    public void findPatternsMatrix() {
+        for(Word w : allWords)
+            for(Word ww : secretWords)
+                patternsMatrix.put(new PairOfWords(w, ww), w.findPatternAsInt(ww));
     }
 }
