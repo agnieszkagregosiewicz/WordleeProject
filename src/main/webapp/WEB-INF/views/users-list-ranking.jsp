@@ -5,11 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <%@ include file="/WEB-INF/fragments/meta.jsp" %>
 
     <title>Strona główna</title>
 
@@ -117,7 +113,7 @@
 
                 <!-- Page Heading -->
                 <div style ="text-align: center; margin-bottom: 30px" >
-                    <h1 class="h3 mb-0 text-gray-800">Lista użytkowników</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Ranking naszych graczy</h1>
                 </div>
                 <div class="row" style="justify-content: center">
 
@@ -179,28 +175,7 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Gotowy do wyjścia?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Wybierz 'wyloguj' jeśli chcesz zakończyć sesję.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Wróć</button>
-                <form action="<c:url value="/logout"/>" method="post">
-                    <input type="submit" value="Wyloguj">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
+<%@ include file="/WEB-INF/fragments/logout.jsp" %>
 
 <!-- Bootstrap core JavaScript-->
 <script src="/theme/vendor/jquery/jquery.min.js"></script>

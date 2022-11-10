@@ -6,11 +6,7 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <%@ include file="/WEB-INF/fragments/meta.jsp" %>
 
     <title>Register</title>
 
@@ -89,9 +85,6 @@
                         </div>
 
                         <hr>
-                        <%--                                <div class="text-center">--%>
-                        <%--                                    <a class="small" href="forgot-password.html">Forgot Password?</a>--%>
-                        <%--                                </div>--%>
 
                     </div>
                 </div>
