@@ -17,7 +17,7 @@ import java.util.List;
 
 @Controller
 public class GameController {
-    String file = "popularne_piatki.txt";
+    String file = "pop5.txt";
     String dictionary = "piatki.txt";
     String headword;
     boolean newgame = true;

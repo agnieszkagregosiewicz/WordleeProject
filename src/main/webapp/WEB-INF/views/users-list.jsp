@@ -7,7 +7,7 @@
 
     <%@ include file="/WEB-INF/fragments/meta.jsp" %>
 
-    <title>Strona główna</title>
+    <title>Lista</title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">

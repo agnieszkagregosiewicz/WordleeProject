@@ -43,7 +43,7 @@
         <li class="nav-item">
             <a class="nav-link" href="/">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Strona główna</span></a>
+                <span>Ranking</span></a>
         </li>
 
         <!-- Divider -->
