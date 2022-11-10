@@ -70,9 +70,17 @@ public class CheckingMethod {
                     if (j == k) {
                         guess[k] = '1';
                         break;
-                    } else {
-                        guess[k] = '2';
-                        break;
+                    }
+                }
+            }
+        }
+        for (int m = 0; m < headword.length(); m++) {
+            if ((Character.isLetter(guess[m]))) {
+                for (int n = 0; n < headword.length(); n++) {
+                    if (headwordChar[m] == guess[n]) {
+                        if (m != n) {
+                            guess[n] = '2';
+                        }
                     }
                 }
             }

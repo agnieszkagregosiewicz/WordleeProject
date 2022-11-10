@@ -47,7 +47,6 @@ public class GameController {
     @PostMapping(value = "/api/word")
     @ResponseBody
     public ResponseEntity<?> receiveWord(@RequestBody Word word, @AuthenticationPrincipal CurrentUser user, Games game, Model model) {
-        System.out.println(headword);
         JsonResponse response = new JsonResponse();
         if (!checkingMethod.checkIfWordExistInArray(word.getWord(), ReadFile.makeArrayFromFile(dictionary))) {
             response.setMsg("Takie słowo nie istnieje.");
@@ -89,6 +88,4 @@ public class GameController {
         }
         return ResponseEntity.ok(response);
     }
-
-
 }

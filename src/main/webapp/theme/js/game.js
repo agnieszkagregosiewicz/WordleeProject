@@ -95,7 +95,11 @@ function coloringCells(j, color, cells, wordToCheck) {
             if (letterButton.style.color != "white") {
             letterButton.style.backgroundColor = color;
             letterButton.style.color = "white";
-        }}
+        } else if (letterButton.style.backgroundColor != "green") {
+                letterButton.style.backgroundColor = color;
+                letterButton.style.color = "white";
+            }
+        }
     })
 }
 const btnPlay = document.querySelector('#playAgain');

@@ -78,7 +78,7 @@ public class UserController {
     @PostMapping(value = "/user/edit")
     public String edit(@Valid User user, BindingResult result) {
         if (!result.hasErrors()) {
-            userService.update(user);
+            userService.updateEdit(user);
             return "redirect:/user";
         }
         return "user-edit";

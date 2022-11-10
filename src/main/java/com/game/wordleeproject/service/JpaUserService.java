@@ -54,6 +54,11 @@ public class JpaUserService implements UserService {
 
     @Override
     public void update(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public void updateEdit(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
