@@ -92,10 +92,10 @@ function coloringCells(j, color, cells, wordToCheck) {
     cells[j - 1].style.color = "white";
     letterButtons.forEach(function (letterButton) {
         if (letterButton.innerText === wordToCheck.charAt(j - 1)) {
-            if (letterButton.style.color != "white") {
+            if (letterButton.style.color !== "white") {
             letterButton.style.backgroundColor = color;
             letterButton.style.color = "white";
-        } else if (letterButton.style.backgroundColor != "green") {
+        } else if (letterButton.style.backgroundColor !== "green") {
                 letterButton.style.backgroundColor = color;
                 letterButton.style.color = "white";
             }

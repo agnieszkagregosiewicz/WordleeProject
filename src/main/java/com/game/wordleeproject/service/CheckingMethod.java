@@ -1,7 +1,10 @@
 package com.game.wordleeproject.service;
 
 import lombok.Data;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,9 +13,12 @@ public class CheckingMethod {
     private List<String> unusedLetters;
 
     private String wordToCheck;
+    //@Value("/static/alfabet.txt")
+    Resource resource = new ClassPathResource("/static/alfabet.txt");
 
-    public CheckingMethod() {
-        unusedLetters = ReadFile.makeArrayFromFile("alfabet.txt");
+
+    public CheckingMethod() throws IOException {
+        unusedLetters = ReadFile.makeArrayFromFile(resource.getURL().getPath());
     }
 
     public String checkOneWord(String headword, String wordToCheck, String inputFileOfWords) {
@@ -64,26 +70,31 @@ public class CheckingMethod {
         for (char c : guess) {
             unusedLetters.remove(Character.toString(c));
         }
+        int[] checked = new int[headword.length()];
+        for (int i = 0; i < 5; i++) {
+            checked[i] = 0;
+        }
+        System.out.println(headword);
         for (int j = 0; j < headword.length(); j++) {
-            for (int k = 0; k < headword.length(); k++) {
-                if (headwordChar[j] == guess[k]) {
-                    if (j == k) {
-                        guess[k] = '1';
-                        break;
-                    }
-                }
+            System.out.println("j = " + j + " head[j] = " + headwordChar[j] + " guess[j] = " + guess[j]);
+            if (headwordChar[j] == guess[j]) {
+                guess[j] = '1';
+                checked[j] = 1;
+                System.out.println("j = " + j + " jest zielone");
+                //break;
             }
         }
         for (int m = 0; m < headword.length(); m++) {
-            if ((Character.isLetter(guess[m]))) {
-                for (int n = 0; n < headword.length(); n++) {
-                    if (headwordChar[m] == guess[n]) {
-                        if (m != n) {
-                            guess[n] = '2';
-                        }
-                    }
+            //if ((Character.isLetter(guess[m]))) {
+            for (int n = 0; n < headword.length(); n++) {
+                System.out.println("m = " + m + " head[m] = " + headwordChar[m] + " n = " + n + " guess[n] = " + guess[n]);
+                if (m != n && checked[m] == 0 && headwordChar[m] == guess[n]) {
+                    System.out.println("m = " + m + " n = " + n + " jest żółte");
+                    guess[n] = '2';
+                    checked[m] = 1;
                 }
             }
+            //}
         }
         for (int l = 0; l < headword.length(); l++) {
             if (Character.isLetter(guess[l])) {

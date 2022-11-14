@@ -26,7 +26,7 @@ public class GameController {
     private final UserService userService;
     private final GamesService gamesService;
 
-    public GameController(UserService userService, GamesService gamesService) {
+    public GameController(UserService userService, GamesService gamesService) throws IOException {
         this.userService = userService;
         this.gamesService = gamesService;
     }
@@ -57,6 +57,7 @@ public class GameController {
         }
         numberOfAttempts++;
         response.setMsg(String.valueOf(checkingMethod.checkLettersInWord(headword, word.getWord())));
+        System.out.println(String.valueOf(checkingMethod.checkLettersInWord(headword, word.getWord())));
         if (response.getMsg().equals("11111")) {
             newgame = true;
             double newScore = 8 - numberOfAttempts;
