@@ -13,7 +13,6 @@ public class CheckingMethod {
     private List<String> unusedLetters;
 
     private String wordToCheck;
-    //@Value("/static/alfabet.txt")
     Resource resource = new ClassPathResource("/static/alfabet.txt");
 
 
@@ -74,27 +73,19 @@ public class CheckingMethod {
         for (int i = 0; i < 5; i++) {
             checked[i] = 0;
         }
-        System.out.println(headword);
         for (int j = 0; j < headword.length(); j++) {
-            System.out.println("j = " + j + " head[j] = " + headwordChar[j] + " guess[j] = " + guess[j]);
             if (headwordChar[j] == guess[j]) {
                 guess[j] = '1';
                 checked[j] = 1;
-                System.out.println("j = " + j + " jest zielone");
-                //break;
             }
         }
         for (int m = 0; m < headword.length(); m++) {
-            //if ((Character.isLetter(guess[m]))) {
             for (int n = 0; n < headword.length(); n++) {
-                System.out.println("m = " + m + " head[m] = " + headwordChar[m] + " n = " + n + " guess[n] = " + guess[n]);
                 if (m != n && checked[m] == 0 && headwordChar[m] == guess[n]) {
-                    System.out.println("m = " + m + " n = " + n + " jest żółte");
                     guess[n] = '2';
                     checked[m] = 1;
                 }
             }
-            //}
         }
         for (int l = 0; l < headword.length(); l++) {
             if (Character.isLetter(guess[l])) {

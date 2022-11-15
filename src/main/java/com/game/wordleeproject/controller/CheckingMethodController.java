@@ -10,7 +10,7 @@ public class CheckingMethodController {
     public static void main(String[] args) throws IOException {
 
         CheckingMethod checkingMethod = new CheckingMethod();
-        String file = "5lettersWords.txt";
+        String file = "pop5.txt";
         String headword = WordGenerator.generateHeadword(file);
         checkingMethod.checkConsoleAttempts(headword, 6, file);
     }

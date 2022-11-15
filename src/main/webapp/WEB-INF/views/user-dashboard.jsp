@@ -29,7 +29,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -41,13 +41,13 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="/">
+            <a class="nav-link" href="">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Strona główna</span></a>
         </li>
         <div class="text-center d-none d-md-inline">
         <li class="nav-item">
-            <a class="nav-link" href="/ranking">
+            <a class="nav-link" href="<c:url value="/ranking"/>">
                 <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 10px; margin-right: 5px" width="16" height="16" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
                     <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"/>
                     <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
@@ -58,6 +58,7 @@
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
         </div>
 
 
@@ -89,22 +90,22 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">${user.login}</span>
                             <img class="img-profile rounded-circle"
-                                 src="/theme/img/undraw_profile.svg">
+                                 src="${pageContext.request.contextPath}/theme/img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
 
-                            <a class="dropdown-item" href="/user/edit?id=${user.id}">
+                            <a class="dropdown-item" href="<c:url value="/user/edit?id=${user.id}"/>">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Zmiana profilu
                             </a>
-                            <a class="dropdown-item" href="/user/delete?id=${user.id}" onclick="return confirm('Czy na pewno chcesz usunąć swoje konto? Zmiany sa nieodwracalne.')">
+                            <a class="dropdown-item" href="<c:url value="/user/delete?id=${user.id}"/>" onclick="return confirm('Czy na pewno chcesz usunąć swoje konto? Zmiany sa nieodwracalne.')">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Usunięcie profilu
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/user/logout" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="<c:url value="/logout"/>" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Wyloguj
                             </a>
@@ -177,7 +178,7 @@
                                         </div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${(user.winnings/user.gamesPlayedQ)*100}%</div>
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${Math.round((user.winnings/user.gamesPlayedQ)*100)}%</div>
                                             </div>
                                             <div class="col">
                                                 <div class="progress progress-sm mr-2">
@@ -228,15 +229,15 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">
-                                    <a href="/user/game"
+                                    <a href="<c:url value="/user/game"/>"
                                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i>
 
-                                        <img class="sidebar-card-illustration mb-2" src="/theme/img/undraw_rocket.svg"
+                                        <img class="sidebar-card-illustration mb-2" src="${pageContext.request.contextPath}/theme/img/undraw_rocket.svg"
                                              alt="Rocket" width="20" height="20"></i> Zagraj! </a>
                                 </h6>
                             </div>
                             <div class="card-body">
-                                <img src="/theme/img/gameview.png" />
+                                <img src="${pageContext.request.contextPath}/theme/img/gameview.png" />
                             </div>
                         </div>
 
@@ -269,14 +270,14 @@
 <%@ include file="/WEB-INF/fragments/logout.jsp" %>
 
 <!-- Bootstrap core JavaScript-->
-<script src="/theme/vendor/jquery/jquery.min.js"></script>
-<script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="/theme/js/sb-admin-2.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/js/sb-admin-2.min.js"></script>
 
 </body>
 

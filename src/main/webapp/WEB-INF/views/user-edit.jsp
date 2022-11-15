@@ -30,7 +30,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/user">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="user">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -42,7 +42,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="/">
+            <a class="nav-link" href="">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Strona główna</span></a>
         </li>
@@ -77,7 +77,7 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Edycja użykownika ${user.login}</h1>
-                    <a href="/user"
+                    <a href="<c:url value="/user/"/>"
                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Konto użytkownika</a>
                 </div>
@@ -86,17 +86,17 @@
                     <div class="form-group">
                         <form:input path="login" class="form-control form-control-user"
                                     placeholder="${user.login}"/>
-                        <form:errors path="login" cssStyle="color: red" element="div"/>
+                        <form:errors path="login" class="badge badge-pilll badge-warning" element="span"/>
                     </div>
                     <div class="form-group">
                         <form:input path="email" class="form-control form-control-user"
                                     placeholder="${user.email}"/>
-                        <form:errors path="email" cssStyle="color: red" element="div"/>
+                        <form:errors path="email" class="badge badge-pilll badge-warning" element="span"/>
                     </div>
                     <div class="form-group">
                         <form:input path="password"  class="form-control form-control-user"
                                 value="Zmień hasło"/>
-                        <form:errors path="password" cssStyle="color: red" element="div"/>
+                        <form:errors path="password" class="badge badge-pilll badge-warning" element="span"/>
                     </div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <input class="btn btn-primary btn-user btn-block" type="submit" value="Zapisz"/>
@@ -128,14 +128,14 @@
 </div>
 <!-- End of Page Wrapper -->
 <!-- Bootstrap core JavaScript-->
-<script src="/theme/vendor/jquery/jquery.min.js"></script>
-<script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="/theme/js/sb-admin-2.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/js/sb-admin-2.min.js"></script>
 </body>
 
 </html>

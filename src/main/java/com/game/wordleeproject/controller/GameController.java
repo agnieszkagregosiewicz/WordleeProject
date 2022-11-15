@@ -2,25 +2,25 @@ package com.game.wordleeproject.controller;
 
 import com.game.wordleeproject.model.*;
 import com.game.wordleeproject.service.*;
-import net.minidev.json.JSONObject;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.data.repository.init.ResourceReader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class GameController {
-    String file = "pop5.txt";
-    String dictionary = "piatki.txt";
+    Resource file = new ClassPathResource("/static/pop5.txt");
+    Resource dictionary = new ClassPathResource("/static/piatki.txt");
     String headword;
-    boolean newgame = true;
+    boolean newGame = true;
     CheckingMethod checkingMethod = new CheckingMethod();
     int numberOfAttempts = 0;
     private final UserService userService;
@@ -31,23 +31,24 @@ public class GameController {
         this.gamesService = gamesService;
     }
 
+
     @GetMapping(value = "/user/game")
-    public String giveWord(Model model, @AuthenticationPrincipal CurrentUser user) {
+    public String giveWord(Model model, @AuthenticationPrincipal CurrentUser user) throws IOException {
         Long ranking = userService.getRanking(user.getUser().getScore());
-        if (newgame) {
-            newgame = false;
-            headword = WordGenerator.generateHeadword(file);
+        if (newGame) {
+            newGame = false;
+            headword = WordGenerator.generateHeadword(file.getFile().getPath());
         }
         model.addAttribute("ranking", ranking);
         model.addAttribute("user", user.getUser());
         return "game";
     }
 
-    @PostMapping(value = "/api/word")
+    @PostMapping(value = "user/api/word")
     @ResponseBody
-    public ResponseEntity<?> receiveWord(@RequestBody Word word, @AuthenticationPrincipal CurrentUser user, Games game, Model model) {
+    public ResponseEntity<?> receiveWord(@RequestBody Word word, @AuthenticationPrincipal CurrentUser user, Games game, Model model) throws IOException {
         JsonResponse response = new JsonResponse();
-        if (!checkingMethod.checkIfWordExistInArray(word.getWord(), ReadFile.makeArrayFromFile(dictionary))) {
+        if (!checkingMethod.checkIfWordExistInArray(word.getWord(), ReadFile.makeArrayFromFile(dictionary.getFile().getPath()))) {
             response.setMsg("Takie słowo nie istnieje.");
             return ResponseEntity.badRequest().body(response);
 
@@ -57,9 +58,8 @@ public class GameController {
         }
         numberOfAttempts++;
         response.setMsg(String.valueOf(checkingMethod.checkLettersInWord(headword, word.getWord())));
-        System.out.println(String.valueOf(checkingMethod.checkLettersInWord(headword, word.getWord())));
         if (response.getMsg().equals("11111")) {
-            newgame = true;
+            newGame = true;
             double newScore = 8 - numberOfAttempts;
             game.setData(String.valueOf(LocalDateTime.now()));
             game.setResult(1);
@@ -74,7 +74,7 @@ public class GameController {
             numberOfAttempts = 0;
         }
         if (numberOfAttempts == 6 && !response.getMsg().equals("11111")) {
-            newgame = true;
+            newGame = true;
             user.getUser().setGamesPlayedQ(user.getUser().getGamesPlayedQ()+1);
             userService.update(user.getUser());
             model.addAttribute("user", user.getUser());

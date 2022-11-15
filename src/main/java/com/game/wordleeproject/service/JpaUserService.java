@@ -6,7 +6,6 @@ import com.game.wordleeproject.repository.RoleRepository;
 import com.game.wordleeproject.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.awt.print.Book;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -32,14 +31,14 @@ public class JpaUserService implements UserService {
 
     @Override
     public void add(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role userRole = roleRepository.findByName("ROLE_USER");
-        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
-        user.setScore(0.0);
-        user.setWinnings(0.0);
-        user.setGamesPlayedQ(0L);
-        user.setGames(null);
-        userRepository.save(user);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            Role userRole = roleRepository.findByName("ROLE_USER");
+            user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+            user.setScore(0.0);
+            user.setWinnings(0.0);
+            user.setGamesPlayedQ(0L);
+            user.setGames(null);
+            userRepository.save(user);
     }
 
     @Override
@@ -71,6 +70,10 @@ public class JpaUserService implements UserService {
     @Override
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+    @Override
+    public Optional<User> findByLogin(String login) {
+        return userRepository.findUserByLogin(login);
     }
 
     public Double getScore(User user) {

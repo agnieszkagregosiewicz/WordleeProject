@@ -29,7 +29,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -41,9 +41,9 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="/">
+            <a class="nav-link" href="">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Ranking</span></a>
+                <span>Strona główna</span></a>
         </li>
 
         <!-- Divider -->
@@ -82,22 +82,22 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">${user.login}</span>
                             <img class="img-profile rounded-circle"
-                                 src="/theme/img/undraw_profile.svg">
+                                 src="${pageContext.request.contextPath}/theme/img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="/user/">
+                            <a class="dropdown-item" href="user/">
                                 <i class=" fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Moje konto
                             </a>
 
-                            <a class="dropdown-item" href="/user/edit?id=${user.id}">
+                            <a class="dropdown-item" href="<c:url value="/user/edit?id=${user.id}"/>">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Zmiana profilu
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/user/logout" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="<c:url value="/logout"/>" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Wyloguj
                             </a>
@@ -178,14 +178,14 @@
 <%@ include file="/WEB-INF/fragments/logout.jsp" %>
 
 <!-- Bootstrap core JavaScript-->
-<script src="/theme/vendor/jquery/jquery.min.js"></script>
-<script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="/theme/js/sb-admin-2.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/js/sb-admin-2.min.js"></script>
 
 </body>
 

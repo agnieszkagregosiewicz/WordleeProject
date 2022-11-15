@@ -38,42 +38,47 @@
                                     <h1 class="h4 text-gray-900 mb-4">Zarejestruj się</h1>
                                 </div>
                                 <form:form class="user/add" method="post" modelAttribute="user">
-                                <div class="form-group">
-                                    <form:input path="login" class="form-control form-control-user"
-                                                placeholder="Wpisz login"/>
-                                    <form:errors path="login" cssStyle="color: red" element="div"/>
-                                </div>
-                                <div class="form-group">
-                                    <form:input path="email" class="form-control form-control-user"
-                                                placeholder="Wpisz email"/>
-                                    <form:errors path="email" cssStyle="color: red" element="div"/>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <form:input path="password" type="password"
-                                                    id="password" class="form-control form-control-user"
-                                                    placeholder="Wpisz hasło"/>
-                                        <form:errors path="password" cssStyle="color: red" element="div"/>
+                                    <div class="form-group">
+                                        <form:input path="login" class="form-control form-control-user"
+                                                    placeholder="Wpisz login"/>
+                                        <form:errors path="login" class="badge badge-pilll badge-warning" element="span"/>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                               id="repeatPassword" placeholder="Powtórz hasło" onclick="check_pass()"/>
+                                    <div class="form-group">
+                                        <form:input path="email" class="form-control form-control-user"
+                                                    placeholder="Wpisz email"/>
+                                        <form:errors path="email" class="badge badge-pilll badge-warning" element="span"/>
                                     </div>
-                                </div>
-                                    <c:if test="${param.error != null && param.error.equals('bad')}">
-                                        <h4 class="h4 text-gray-900 mb-4">Nieprawidłowe dane</h4>
-                                    </c:if>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <form:input path="password" type="password"
+                                                        id="password" class="form-control form-control-user"
+                                                        placeholder="Wpisz hasło"/>
+                                            <form:errors path="password" class="badge badge-pilll badge-warning"
+                                                         element="span"/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="password" class="form-control form-control-user"
+                                                   id="repeatPassword" placeholder="Powtórz hasło"
+                                                   onclick="check_pass()"/>
+                                        </div>
+                                    </div>
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                    <div style="height: 30px; text-align: center">
-                                    <span id=warningPass class="badge badge-pilll badge-warning d-none"></span>
+                                    <div style="height: 25px; text-align: center">
+                                        <c:if test="${param.error != null && param.error.equals('bad')}">
+                                            <span class="badge badge-pilll badge-warning">Email lub login już istnieje</span>
+                                        </c:if>
+                                        <span id=warningPass class="badge badge-pilll badge-warning d-none"></span>
                                     </div>
-                                        <input style="margin-top: 10px" disabled id="submit" class="btn btn-primary btn-user btn-block" type="submit" value="Zapisz"/>
+                                    <input style="margin-top: 10px" disabled id="submit"
+                                           class="btn btn-primary btn-user btn-block" type="submit" value="Zapisz"/>
 
                                     <hr>
-                                    <a href="https://accounts.google.com/o/oauth2/v2/auth" class="btn btn-google btn-user btn-block">
+                                    <a href="https://accounts.google.com/o/oauth2/v2/auth"
+                                       class="btn btn-google btn-user btn-block">
                                         <i class="fab fa-google fa-fw"></i> Register with Google
                                     </a>
-                                    <a href="www.facebook.com/v15.0/dialog/oauth?" class="btn btn-facebook btn-user btn-block">
+                                    <a href="https://facebook.com/v15.0/dialog/oauth?"
+                                       class="btn btn-facebook btn-user btn-block">
                                         <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                                     </a>
                                 </form:form>
@@ -92,20 +97,17 @@
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="/theme/vendor/jquery/jquery.min.js"></script>
-<script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="/theme/js/sb-admin-2.min.js"></script>
-<script src="/theme/js/passwordValidation.js"></script>
+<script src="${pageContext.request.contextPath}/theme/js/sb-admin-2.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/js/passwordValidation.js"></script>
 
 </body>
 

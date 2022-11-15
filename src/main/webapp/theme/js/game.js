@@ -36,7 +36,7 @@ function sendWordToCheck(wordToCheck) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "/api/word",
+        url: "api/word",
         data: JSON.stringify(word),
         dataType: 'json',
         cache: false,

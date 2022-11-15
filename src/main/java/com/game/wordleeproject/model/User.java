@@ -19,22 +19,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
+    @NotEmpty (message = "Pole nie może być puste")
     @Column(unique = true)
     private String login;
-    @NotEmpty
+    @NotEmpty (message = "Pole nie może być puste")
     @Size(min = 7, message = "Hasło musi mieć conajmniej 7 znaków")
     private String password;
-    @NotEmpty
+    @NotEmpty (message = "Pole nie może być puste")
     @Column(unique = true)
-    @Email (message = "Wpisz poprawny email")
+    @Email (message = "Nieprawidłowy email")
     private String email;
     private Double winnings;
     private Long gamesPlayedQ;
     private Double score;
     @OneToMany  (cascade = CascadeType.ALL, fetch = FetchType.EAGER)//(mappedBy = "user_id")
     private List<Games> games = new ArrayList<>();
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;

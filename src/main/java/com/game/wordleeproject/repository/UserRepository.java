@@ -24,6 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Modifying
     void deleteUserById(Long id);
     Optional<User> findByEmail(String email);
+    Optional<User> findUserByLogin(String login);
 
     @Query("select count(u) FROM User u Where u.score >= :score")
     Long getRanking(Double score);

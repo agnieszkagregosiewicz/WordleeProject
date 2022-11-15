@@ -15,6 +15,7 @@ public interface UserService {
     void update(User user);
     void updateEdit(User user);
     Optional<User> findByEmail(String email);
+    Optional<User> findByLogin(String login);
     Long getRanking(Double score);
     List<User> getListRanking();
 
