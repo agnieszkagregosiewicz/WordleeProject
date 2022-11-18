@@ -41,7 +41,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="<c:url value="/wordleeProject"/>">
+            <a class="nav-link" href="<c:url value="/"/>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Strona główna</span></a>
         </li>

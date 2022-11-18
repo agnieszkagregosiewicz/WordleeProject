@@ -37,50 +37,64 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Zarejestruj się</h1>
                                 </div>
+                                <div style="margin-bottom: 10px; margin-top: -15px">
+                                    <a href="<c:url value="/vgame"/>" class="btn btn-google btn-user btn-block">
+                                        Zagraj jako Gość
+                                    </a>
+                                </div>
                                 <form:form class="user/add" method="post" modelAttribute="user">
                                     <div class="form-group">
                                         <form:input path="login" class="form-control form-control-user"
                                                     placeholder="Wpisz login"/>
-                                        <form:errors path="login" class="badge badge-pilll badge-warning" element="span"/>
+                                        <form:errors path="login" class="badge badge-pilll badge-warning"
+                                                     element="span"/>
                                     </div>
                                     <div class="form-group">
                                         <form:input path="email" class="form-control form-control-user"
                                                     placeholder="Wpisz email"/>
-                                        <form:errors path="email" class="badge badge-pilll badge-warning" element="span"/>
+                                        <form:errors path="email" class="badge badge-pilll badge-warning"
+                                                     element="span"/>
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <form:input path="password" type="password"
-                                                        id="password" class="form-control form-control-user"
-                                                        placeholder="Wpisz hasło"/>
-                                            <form:errors path="password" class="badge badge-pilll badge-warning"
-                                                         element="span"/>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input type="password" class="form-control form-control-user"
-                                                   id="repeatPassword" placeholder="Powtórz hasło"
-                                                   onclick="check_pass()"/>
-                                        </div>
+                                    <div class="form-group">
+                                        <form:input path="password" type="password"
+                                                    id="password" class="form-control form-control-user"
+                                                    placeholder="Wpisz hasło"/>
+                                        <form:errors path="password" class="badge badge-pilll badge-warning"
+                                                     element="span"/>
                                     </div>
+                                    <%--                                    podwójna weryfikacja hasła, do poprawy--%>
+                                    <%--                                    <div class="form-group row">--%>
+                                    <%--                                        <div class="col-sm-6 mb-3 mb-sm-0">--%>
+                                    <%--                                            <form:input path="password" type="password"--%>
+                                    <%--                                                        id="password" class="form-control form-control-user"--%>
+                                    <%--                                                        placeholder="Wpisz hasło"/>--%>
+                                    <%--                                            <form:errors path="password" class="badge badge-pilll badge-warning"--%>
+                                    <%--                                                         element="span"/>--%>
+                                    <%--                                        </div>--%>
+                                    <%--                                        <div class="col-sm-6">--%>
+                                    <%--                                            <input type="password" class="form-control form-control-user"--%>
+                                    <%--                                                   id="repeatPassword" placeholder="Powtórz hasło"--%>
+                                    <%--                                                   onclick="check_pass()"/>--%>
+                                    <%--                                        </div>--%>
+                                    <%--                                    </div> input disabled--%>
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                     <div style="height: 25px; text-align: center">
                                         <c:if test="${param.error != null && param.error.equals('bad')}">
                                             <span class="badge badge-pilll badge-warning">Email lub login już istnieje</span>
                                         </c:if>
+                                        <h6 class="h6 text-gray-900 mb-4" id="fbGogle"></h6>
                                         <span id=warningPass class="badge badge-pilll badge-warning d-none"></span>
                                     </div>
-                                    <input style="margin-top: 10px" disabled id="submit"
+                                    <input style="margin-top: 10px" id="submit"
                                            class="btn btn-primary btn-user btn-block" type="submit" value="Zapisz"/>
 
                                     <hr>
-                                    <a href="https://accounts.google.com/o/oauth2/v2/auth"
-                                       class="btn btn-google btn-user btn-block">
+                                    <btn class="btn btn-google btn-user btn-block" id="btn-google">
                                         <i class="fab fa-google fa-fw"></i> Register with Google
-                                    </a>
-                                    <a href="https://facebook.com/v15.0/dialog/oauth?"
-                                       class="btn btn-facebook btn-user btn-block">
+                                    </btn>
+                                    <btn class="btn btn-facebook btn-user btn-block">
                                         <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                    </a>
+                                    </btn>
                                 </form:form>
                                 <div class="text-center">
                                     <a class="small" href="user/login">Masz już konto? Zaloguj się!</a>
@@ -108,7 +122,7 @@
 <!-- Custom scripts for all pages-->
 <script src="${pageContext.request.contextPath}/theme/js/sb-admin-2.min.js"></script>
 <script src="${pageContext.request.contextPath}/theme/js/passwordValidation.js"></script>
-
+<script src="${pageContext.request.contextPath}/theme/js/fbGoogle.js"></script>
 </body>
 
 </html>

@@ -37,6 +37,11 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Zaloguj się</h1>
                                 </div>
+                                <div style="margin-bottom: 10px; margin-top: -15px">
+                                <a href="<c:url value="/vgame"/>" class="btn btn-google btn-user btn-block">
+                                    Zagraj jako Gość
+                                </a>
+                                </div>
                                 <form class="user/add" method="post">
                                     <div class="form-group">
                                         <input name="username" class="form-control form-control-user"
@@ -51,16 +56,17 @@
                                     <c:if test="${param.error != null && param.error.equals('')}">
                                     <h4 class="h6 text-gray-900 mb-4">Nieprawidłowe dane logowania</h4>
                                     </c:if>
+                                        <h4 class="h6 text-gray-900 mb-4" id="fbGogle"></h4>
                                     </div>
                                     <input class="btn btn-primary btn-user btn-block" type="submit" value="Zaloguj się"/>
                                     <hr>
 
-                                    <a href="https://accounts.google.com/o/oauth2/v2/auth" class="btn btn-google btn-user btn-block">
+                                    <btn class="btn btn-google btn-user btn-block" id="btn-google">
                                         <i class="fab fa-google fa-fw"></i> Zaloguj za pomocą Google
-                                    </a>
-                                    <a href="https://facebook.com/v15.0/dialog/oauth?" class="btn btn-facebook btn-user btn-block">
+                                    </btn>
+                                    <btn class="btn btn-facebook btn-user btn-block">
                                         <i class="fab fa-facebook-f fa-fw"></i> Zaloguj za pomocą Facebook'a
-                                    </a>
+                                    </btn>
 
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 </form>
@@ -88,6 +94,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="${pageContext.request.contextPath}/theme/js/sb-admin-2.min.js"></script>
+<script src="${pageContext.request.contextPath}/theme/js/fbGoogle.js"></script>
 
 </body>
 

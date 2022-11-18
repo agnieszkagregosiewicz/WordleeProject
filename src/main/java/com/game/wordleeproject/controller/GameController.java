@@ -88,4 +88,49 @@ public class GameController {
         }
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping(value = "/vgame")
+    public String giveWordVisitor() throws IOException {
+        if (newGame) {
+            newGame = false;
+            headword = WordGenerator.generateHeadword(file.getFile().getPath());
+        }
+        return "visitorgame";
+    }
+
+    @PostMapping(value = "api/word")
+    @ResponseBody
+    public ResponseEntity<?> receiveWordVisitor(@RequestBody Word word, Games game) throws IOException {
+        JsonResponse response = new JsonResponse();
+        if (!checkingMethod.checkIfWordExistInArray(word.getWord(), ReadFile.makeArrayFromFile(dictionary.getFile().getPath()))) {
+            response.setMsg("Takie słowo nie istnieje.");
+            return ResponseEntity.badRequest().body(response);
+
+        } else if (!checkingMethod.checkIfWordLengthIsOK(headword, word.getWord())) {
+            response.setMsg("Słowo powinno mieć: " + headword.length() + " liter.");
+            return ResponseEntity.badRequest().body(response);
+        }
+        numberOfAttempts++;
+        response.setMsg(String.valueOf(checkingMethod.checkLettersInWord(headword, word.getWord())));
+        if (response.getMsg().equals("11111")) {
+            newGame = true;
+            game.setData(String.valueOf(LocalDateTime.now()));
+            game.setResult(1);
+            game.setNumberOfAttempt(numberOfAttempts);
+            gamesService.add(game);
+            numberOfAttempts = 0;
+        }
+        if (numberOfAttempts == 6 && !response.getMsg().equals("11111")) {
+            newGame = true;
+            game.setResult(0);
+            game.setData(String.valueOf(LocalDateTime.now()));
+            game.setNumberOfAttempt(7);
+            gamesService.add(game);
+            response.setMsg(String.valueOf(checkingMethod.checkLettersInWord(headword, word.getWord())) +": " + headword);
+            numberOfAttempts = 0;
+            return ResponseEntity.ok(response);
+        }
+        return ResponseEntity.ok(response);
+    }
+
 }

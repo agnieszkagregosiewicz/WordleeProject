@@ -10,4 +10,6 @@ public class WordGenerator {
         String headword = arrayFromFile.get(random);
         return headword;
     }
+
+
 }
